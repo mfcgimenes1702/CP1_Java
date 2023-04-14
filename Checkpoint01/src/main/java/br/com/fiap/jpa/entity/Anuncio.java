@@ -13,38 +13,39 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_INSIGHTIA_ANUNCIO")
-@SequenceGenerator(name="anuncio", sequenceName = "SQ_INSIGHTIA_ANUNCIO", allocationSize = 1)
+@Table(name = "TB_INSIGHTIA_ANUNCIO")
+@SequenceGenerator(name = "anuncio", sequenceName = "SQ_INSIGHTIA_ANUNCIO", allocationSize = 1)
 public class Anuncio {
-	
+
 	@Id
-	@Column(name="id_anuncio")
+	@Column(name = "id_anuncio")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "anuncio")
 	private Integer codigo;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="sg_ativo", nullable = false)
-	private TipoAtividade tipo;
-	
-	@Column(name="ds_descricao", nullable = false, length = 100)
+	@Column(name = "sg_ativo", nullable = false)
+	private TipoAnuncio tipo;
+
+	@Column(name = "ds_descricao", nullable = false, length = 100)
 	private String conteudo;
-	
+
 	private Usuario usuario;
-	
+
 	private List<Comando> listaComando;
-	
+
 	private List<Insight> listaInsight;
 
-	//Construtor
-	
-	public Anuncio(TipoAtividade tipo, String conteudo, Usuario usuario) {
+	// Construtor
+
+	public Anuncio(TipoAnuncio tipo, String conteudo, Usuario usuario) {
 		this.tipo = tipo;
 		this.conteudo = conteudo;
 	}
-	
-	public Anuncio() {};
-	
-	//Getters & Setters
+
+	public Anuncio() {
+	};
+
+	// Getters & Setters
 
 	public Integer getCodigo() {
 		return codigo;
@@ -54,11 +55,11 @@ public class Anuncio {
 		this.codigo = codigo;
 	}
 
-	public TipoAtividade getTipo() {
+	public TipoAnuncio getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TipoAtividade tipo) {
+	public void setTipo(TipoAnuncio tipo) {
 		this.tipo = tipo;
 	}
 
@@ -93,11 +94,5 @@ public class Anuncio {
 	public void setListaInsight(List<Insight> listaInsight) {
 		this.listaInsight = listaInsight;
 	}
-	
-	
-	
-	
-	
-	
 
 }
